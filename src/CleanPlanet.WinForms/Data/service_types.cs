@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
+
+namespace CleanPlanet.WinForms.Data;
+
+[Table("service_types", Schema = "cp")]
+[Index("name", Name = "UQ_service_types_name", IsUnique = true)]
+public partial class service_types
+{
+    [Key]
+    public int id { get; set; }
+
+    [StringLength(100)]
+    public string name { get; set; } = null!;
+
+    [Column(TypeName = "decimal(10, 3)")]
+    public decimal complexity_k { get; set; }
+
+    public DateTime created_at { get; set; }
+
+    [InverseProperty("service_type")]
+    public virtual ICollection<services> services { get; set; } = new List<services>();
+}

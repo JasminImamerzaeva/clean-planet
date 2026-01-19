@@ -1,0 +1,14 @@
+# Visual Studio
+.vs/
+**/bin/
+**/obj/
+*.user
+*.suo
+
+# publish output
+**/publish/
+
+# local settings
+appsettings.json
+*.mdf
+*.ldf
